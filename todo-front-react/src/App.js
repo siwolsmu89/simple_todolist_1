@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TodoListTemplate from "./components/todo-list-template/TodoListTemplate";
 import Form from "./components/form/Form.js";
 import TodoItemList from "./components/todo-item-list/TodoItemList.js";
+import Palette from "./components/palette/Palette";
 
 class App extends Component {
 
@@ -10,10 +11,17 @@ class App extends Component {
     state = {
         input: '',
         todos: [
-            { id: 0, text: '리액트 소개', checked: false },
-            { id: 1, text: '리액트 소개', checked: true },
-            { id: 2, text: '리액트 소개', checked: false }
-        ]
+            { id: 0, text: '리액트 소개', checked: false, color: '#343a40' },
+            { id: 1, text: '리액트 소개', checked: true, color: '#343a40' },
+            { id: 2, text: '리액트 소개', checked: false, color: '#343a40' }
+        ],
+        colors: [
+            { id: 0, colorValue: '#343a40' },
+            { id: 1, colorValue: '#f03e3e' },
+            { id: 2, colorValue: '#228ae6' },
+            { id: 3, colorValue: '#12b886' }
+        ],
+        selectedColor: '#343a40'
     }
 
     handleChange = (e) => {
@@ -23,13 +31,14 @@ class App extends Component {
     }
 
     handleCreate = () => {
-        const { input, todos } = this.state;
+        const { input, todos, selectedColor } = this.state;
         this.setState({
             input: '',
             todos: todos.concat({
                 id: this.id++,
                 text: input,
-                checked: false
+                checked: false,
+                colorValue: selectedColor
             })
         });
     }
@@ -64,14 +73,21 @@ class App extends Component {
         });
     }
 
+    handleSelect = (colorValue) => {
+        this.setState({
+            selectedColor: colorValue
+        })
+    }
+
     render() {
-        const { input, todos } = this.state;
+        const { input, todos, colors, selectedColor } = this.state;
         const {
             handleChange,
             handleCreate,
             handleKeyPress,
             handleToggle,
-            handleRemove
+            handleRemove,
+            handleSelect
         } = this;
 
         return (
@@ -79,11 +95,17 @@ class App extends Component {
                 <TodoListTemplate form={(
                     <Form
                         value={input}
+                        colorValue={selectedColor}
                         onKeyPress={handleKeyPress}
                         onChange={handleChange}
                         onCreate={handleCreate}
                     />
-                )}>
+                )}
+                palette={(<Palette
+                        colors={colors}
+                        onSelect={handleSelect}
+                        selected={selectedColor}
+                />)}>
                     <TodoItemList
                         todos={todos}
                         onToggle={handleToggle}
