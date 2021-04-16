@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import TodoListTemplate from "./components/TodoListTemplate";
-import Form from "./components/Form.js";
-import TodoItemList from "./components/TodoItemList.js";
+import TodoListTemplate from "./components/todo-list-template/TodoListTemplate";
+import Form from "./components/form/Form.js";
+import TodoItemList from "./components/todo-item-list/TodoItemList.js";
 
 class App extends Component {
 

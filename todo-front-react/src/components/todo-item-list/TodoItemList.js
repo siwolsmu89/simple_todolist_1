@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TodoItem from './TodoItem.js'
+import TodoItem from './todo-item/TodoItem.js'
 
 class TodoItemList extends Component {
 
