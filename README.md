@@ -3,6 +3,8 @@
 ---
 <h3>Project : simple_todolist_1</h3>
 <br/>
+Skills : React
+<br/>
 Start at 2021/04/15
 
 ---
