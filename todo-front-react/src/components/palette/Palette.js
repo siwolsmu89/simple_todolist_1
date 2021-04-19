@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Palette.css';
-import './colorChip/ColorChip';
-import ColorChip from "./colorChip/ColorChip";
+import './color-chip/ColorChip';
+import ColorChip from "./color-chip/ColorChip";
 
 class Palette extends Component {
 
